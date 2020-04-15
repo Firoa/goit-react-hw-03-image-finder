@@ -19,8 +19,7 @@ class Modal extends Component {
     if (current && e.target !== current) return;
     this.props.onClose();
   };
-  render() {
-    console.log(this.props.largeURL);
+  render() {   
     return (
       <div
         className={styles.Overlay}
