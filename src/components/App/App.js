@@ -18,10 +18,9 @@ class App extends Component {
     modalUrl: '',
   };
 
-  handleModalOpen = id => {    
-    const { largeImageURL } = this.state.img.find(item => item.id === id);   
-    this.setState({ modalUrl: largeImageURL });
-    this.setState({ isOpen: true });
+  handleModalOpen = id => {
+    const { largeImageURL } = this.state.img.find(item => item.id === id);
+    this.setState({ modalUrl: largeImageURL, isOpen: true });
   };
 
   handleModalClose = () => {
@@ -32,7 +31,7 @@ class App extends Component {
     this.setState({ query: searchStr, page: 1 });
   };
 
-  addMore = () => {   
+  addMore = () => {
     this.setState({ isLoading: true });
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
@@ -41,7 +40,7 @@ class App extends Component {
     this.setState({ isLoading: true });
     fetchImgWithQuery('')
       .then(img => {
-        this.setState({ img });        
+        this.setState({ img });
       })
       .catch(error => {
         this.setState({ error });
@@ -54,7 +53,7 @@ class App extends Component {
       prevState.page !== this.state.page ||
       prevState.query !== this.state.query
     ) {
-      this.setState({ isLoading: true });      
+      this.setState({ isLoading: true });
       fetchImgWithQuery(this.state.query, this.state.page)
         .then(img => {
           prevState.query !== this.state.query
